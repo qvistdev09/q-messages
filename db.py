@@ -1,7 +1,10 @@
-import psycopg2
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
 from os import environ as env
+from sqlalchemy.ext.declarative import declarative_base
+import config
 
-
-def create_connection():
-    return psycopg2.connect(
-        f'dbname={env.get("DB_DATABASE")} user={env.get("DB_USER")} password={env.get("DB_PASSWORD")} host={env.get("DB_HOST")} port={env.get("DB_PORT")}')
+config.load()
+engine = create_engine(env.get("DB_STRING"))
+Session = sessionmaker(bind=engine)
+Base = declarative_base()
