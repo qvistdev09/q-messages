@@ -4,6 +4,8 @@ from os import environ as env
 from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
 from flask import Flask, redirect, render_template, session, url_for
+from db import Session
+from message import Message
 
 config.load()
 
@@ -52,8 +54,11 @@ def logout():
 
 @app.route("/")
 def home():
+    dbSession = Session()
+    messages = dbSession.query(Message).all()
+    print(messages[0].created_at)
+    dbSession.close()
     return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
-
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=env.get("PORT", 3000))
