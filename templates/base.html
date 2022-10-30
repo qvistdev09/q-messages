@@ -6,10 +6,12 @@
   <title>q-Messages</title>
 </head>
 <body>
-  <header>
+  <header class="header">
     <h1>q-Messages</h1>
     {% if session %}
-      <img referrerpolicy="no-referrer" src="{{session.userinfo.picture}}" alt="{{session.userinfo.name}}'s profile picture" />
+      <div class="profile-picture">
+        <img class="profile-picture-img" referrerpolicy="no-referrer" src="{{session.userinfo.picture}}" alt="{{session.userinfo.name}}'s profile picture" />
+      </div>
     {% else %}
       <p><a href="/login">Login</a></p>
     {% endif %}
