@@ -1,0 +1,11 @@
+{% macro card(card_object, level) -%}
+  <div style="padding-left:{{ level * 10 }}px;">
+    <p>{{ card_object.body }}</p>
+    <p>{{ level }}</p>
+    {% if card_object.children %}
+      {% for child in card_object.children %}
+        {{ card(child, level + 1) }}
+      {% endfor %}
+    {% endif %}
+  </div>
+{%- endmacro %}

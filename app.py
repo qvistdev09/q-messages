@@ -1,4 +1,3 @@
-import json
 import config
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
@@ -56,9 +55,9 @@ def logout():
 @app.route("/")
 def home():
     dbSession = Session()
-    messages = dbSession.query(Message).order_by(
+    messages = dbSession.query(Message).filter(Message.parent_message.is_(None)).order_by(
         desc(Message.created_at)).all()
-    for message in messages:
-        print(message.children)
+    template_output = render_template(
+        "home.html", session=session.get('user'), messages=messages)
     dbSession.close()
-    return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
+    return template_output
