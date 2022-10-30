@@ -5,9 +5,17 @@
     <title>q-Messages</title>
 </head>
 <body>
-    <main>{% block content %}{% endblock %}</main>
-    <footer>
-      <p>Footer text</p>
-    </footer>
+  <header>
+    <h1>q-Messages</h1>
+    {% if session %}
+      <img referrerpolicy="no-referrer" src="{{session.userinfo.picture}}" alt="{{session.userinfo.name}}'s profile picture" />
+    {% else %}
+      <p><a href="/login">Login</a></p>
+    {% endif %}
+  </header>
+  <main>{% block content %}{% endblock %}</main>
+  <footer>
+    <p>Footer text</p>
+  </footer>
 </body>
 </html>

@@ -59,6 +59,3 @@ def home():
     print(messages[0].created_at)
     dbSession.close()
     return render_template("home.html", session=session.get('user'), pretty=json.dumps(session.get('user'), indent=4))
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=env.get("PORT", 3000))
