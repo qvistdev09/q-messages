@@ -1,12 +1,25 @@
-{% macro card(card_object, level) -%}
-  <div {% if level == 0 %}class="card"{% endif %}>
-    <div style="padding-left:{{ level * 10 }}px;">
-      <p>{{ card_object.created_at }}</p>
-      <p>{{ card_object.body }}</p>
+{% macro card(card_object, spacing) -%}
+  <div {% if spacing == 20 %}class="card"{% endif %}>
+    <div class="border-left">
+      <div class="flex-row space-between medium-padding border-bottom light-bg border-top">
+        <p class="bold h-color">{{ card_object.nickname }}</p>
+        <p class="light small-text">{{ card_object.readable_date }}</p>
+      </div>
+      <div class="large-padding">
+        <p>{{ card_object.body }}</p>
+        <div class="flex-row justify-end">
+          <a href="messages/{{card_object.id}}/reply">reply</a>
+        </div>
+      </div>
       {% if card_object.children %}
-        {% for child in card_object.children %}
-          {{ card(child, level + 1) }}
-        {% endfor %}
+        <div class="flex-row align-stretch">
+          <div class="flex light-bg border-top" style="max-width:{{ spacing }}px;"></div>
+          <div class="flex-column flex">
+            {% for child in card_object.children %}
+              {{ card(child, spacing + 20) }}
+            {% endfor %}
+          </div>
+        </div>
       {% endif %}
     </div>
   </div>

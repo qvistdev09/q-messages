@@ -2,6 +2,7 @@ from datetime import datetime
 from db import Base
 from sqlalchemy import Column, ForeignKey, String, Integer, DateTime
 from sqlalchemy.orm import relationship
+from sqlalchemy.ext.hybrid import hybrid_property
 
 
 class Message(Base):
@@ -14,6 +15,10 @@ class Message(Base):
     parent_message = Column("parent_message", Integer,
                             ForeignKey("messages.id"))
     children = relationship("Message")
+
+    @hybrid_property
+    def readable_date(self):
+        return self.created_at.strftime("%H:%M %B %d, %Y")
 
     def __init__(self, body: str, nickname: str, author_sub: str, created_at: datetime):
         self.body = body
