@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 
 * {
   box-sizing: border-box;
@@ -10,6 +11,7 @@
   --lightBg: rgb(244, 248, 250);
   --border: rgba(80, 75, 237, 0.484);
   --header: rgb(80, 86, 207);
+  --headerLight: rgba(80, 86, 207, 0.764);
 }
 
 .body {
@@ -49,14 +51,30 @@
 
 .app-title {
   margin: 0;
-  font-size: 1.7rem;
+  font-size: 1rem;
   letter-spacing: 1px;
-  font-weight: 700;
-  color: var(--header);
+  font-weight: 900;
+  color: var(--headerLight);
   padding: 1rem;
-  border-right: 1px solid var(--border);
   align-self: stretch;
   display: flex;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+}
+
+.app-title-detail {
+  font-size: 1.7rem;
+  font-weight: 900;
+  background-color: var(--header);
+  color: var(--lightBg);
+  font-family: "Montserrat", sans-serif;
+  border: 1px solid rgb(203, 203, 255);
+  padding: 0.4rem;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  width: 3rem;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
