@@ -100,3 +100,7 @@
 .gap-small {
   gap: 0.2rem;
 }
+
+.gap-medium {
+  gap: 1rem;
+}
