@@ -2,6 +2,6 @@
 {% import 'macros.html' as macros %}
 {% block content %}
   {% for message in messages %}
-    {{ macros.card(message, 10) }}
+    {{ macros.card(message, 16, true) }}
   {% endfor %}
 {% endblock %}

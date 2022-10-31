@@ -10,7 +10,7 @@
   --bg: rgb(148, 182, 255);
   --lightBg: rgb(244, 248, 250);
   --shadedBg: rgba(165, 201, 255, 0.153);
-  --border: rgba(80, 75, 237, 0.484);
+  --border: rgba(80, 75, 237, 0.385);
   --header: rgb(80, 86, 207);
   --headerLight: rgba(80, 86, 207, 0.764);
 }
@@ -51,6 +51,10 @@
   flex: 1;
 }
 
+.gap-tiny {
+  gap: 0.3rem;
+}
+
 .gap-small {
   gap: 0.4rem;
 }
@@ -73,12 +77,34 @@
   padding: 0.5rem;
 }
 
+.small-padding-l {
+  padding-left: 0.5rem;
+}
+
 .medium-padding {
   padding: 1rem;
 }
 
 .large-padding {
   padding: 1.5rem;
+}
+
+.no-padding-r {
+  padding-right: 0;
+}
+
+.no-padding-l {
+  padding-left: 0;
+}
+
+.no-padding-t {
+  padding-top: 0;
+}
+
+/* margins */
+
+.small-margin-top {
+  margin-top: 0.5rem;
 }
 
 /* Borders */
@@ -128,6 +154,10 @@
 }
 
 /* Font size options */
+
+.fs-tiny {
+  font-size: 0.7rem;
+}
 
 .fs-small {
   font-size: 0.9rem;
@@ -217,4 +247,15 @@
 
 a:hover > .hover-underline {
   text-decoration: underline;
+}
+
+/* square */
+
+.square-1 {
+  width: 1.2rem;
+  height: 1.2rem;
+  max-width: 1.2rem;
+  max-height: 1.2rem;
+  min-width: 1.2rem;
+  min-height: 1.2rem;
 }

@@ -1,41 +1,39 @@
-{% macro card(card_object, spacing) -%}
-  <div {% if spacing == 10 %}class="br-medium bs-card bc-light"{% endif %}>
-    <div>
-      <div class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top">
-        <div class="flex-row align-center gap-small">
-          <div class="flex-row align-center justify-center bc-header small-padding br-medium">
-            <i class="fs-small fa-solid fa-user fc-light"></i>
-          </div>
-          <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
+{% macro card(card_object, spacing, is_top_level) -%}
+  <div {% if is_top_level %}class="br-medium bs-card bc-light"{% else %}class="small-margin-top"{% endif %}>
+    <div {% if is_top_level %}class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top"{% else %}class="flex-row align-center justify-between border-bottom small-padding"{% endif %}>
+      <div class="flex-row align-center gap-tiny">
+        <div class="flex-row align-center justify-center bc-header square-1 br-half">
+          <i class="fs-tiny fa-solid fa-user fc-light"></i>
         </div>
-        <div class="flex-row align-center gap-small">
-          <i class="fa-regular fa-clock fc-header fs-small"></i>
-          <p class="fw-light fs-small fc-header">{{ card_object.readable_date }}</p>
-        </div>
+        <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
       </div>
-      <div class="large-padding">
-        <p>{{ card_object.body }}</p>
-        {% if session %}
-          <div class="flex-row justify-end">
-            <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">
-              <span class="hover-underline">reply</span>
-              <i class="fa-solid fa-reply fs-small"></i>
-            </a>
-          </div>
-        {% endif %}
+      <div class="flex-row align-center gap-small">
+        <i class="fa-regular fa-clock fc-header fs-small"></i>
+        <p class="fw-light fs-small fc-header">{{ card_object.readable_date }}</p>
       </div>
-      {% if card_object.children %}
-        <div class="flex-row align-stretch">
-          <div class="flex border-right" style="max-width:{{ spacing }}px;"></div>
-          <div class="small-padding flex-column flex">
-            {% for child in card_object.children %}
-              <div class="small-padding">
-                {{ card(child, spacing + 10) }}
-              </div>
-            {% endfor %}
-          </div>
+    </div>
+    <div class="medium-padding{% if is_top_level != true%} no-padding-r{% endif %}">
+      <p>{{ card_object.body }}</p>
+      {% if session %}
+        <div class="flex-row justify-end">
+          <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">
+            <i class="fa-solid fa-reply fs-small"></i>
+            <span class="hover-underline">reply</span>
+          </a>
         </div>
       {% endif %}
     </div>
+    {% if card_object.children %}
+      <div {% if is_top_level %}class="medium-padding no-padding-t no-padding-l"{% endif %}>
+        <div class="flex-row align-stretch">
+          <div class="flex border-right" style="max-width:{{ spacing }}px;"></div>
+          <div class="flex-column flex small-padding-l">
+            {% for child in card_object.children %}
+              {{ card(child, spacing, false) }}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </div>
 {%- endmacro %}
