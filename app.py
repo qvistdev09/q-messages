@@ -7,6 +7,7 @@ from flask import Flask, redirect, render_template, session, url_for, request
 from db import Session
 from message import Message
 from sqlalchemy import desc
+from sqlalchemy.orm import joinedload
 
 config.load()
 
@@ -57,7 +58,7 @@ def logout():
 def home():
     try:
         dbSession = Session()
-        messages = dbSession.query(Message).filter(Message.parent_message.is_(None)).order_by(
+        messages = dbSession.query(Message).options(joinedload(Message.children)).filter(Message.parent_message.is_(None)).order_by(
             desc(Message.created_at)).all()
         template_output = render_template(
             "home.html", session=session.get('user'), messages=messages)
