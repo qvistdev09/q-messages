@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import 'macros.html' as macros %}
+{% block content %}
+  <form class="br-medium bs-card bc-light" action="/new-post" method="post">
+    <div class="flex-row align-center medium-padding border-bottom bc-shaded border-top gap-tiny">
+      <i class="fa-solid fa-pen fs-tiny fc-header-light"></i>
+      <p class="fw-bold fc-header">New post</p>
+    </div>
+    <div class="medium-padding flex-column align-stretch gap-small">
+      <div class="flex-row align-center gap-small">
+        <div class="flex-row align-center justify-center bc-header-light square-1 br-half">
+          <i class="fs-tiny fa-solid fa-user fc-light"></i>
+        </div>
+        <p class="fc-header">posting message as:</p>
+        <p class="fw-bold fc-header">{{ session.userinfo.nickname }}</p>
+      </div>
+      <textarea name="body" rows="10" class="small-padding flex bordered br-medium fc-header lh-150"></textarea>
+      <button class="fc-light bc-header small-padding br-medium hover-cursor bch-header-dark">Create post</button>
+    </div>
+  </form>
+{% endblock %}

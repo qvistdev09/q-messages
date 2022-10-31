@@ -61,3 +61,8 @@ def home():
         "home.html", session=session.get('user'), messages=messages)
     dbSession.close()
     return template_output
+
+
+@app.route("/new-post")
+def new_post():
+    return render_template("new-post.html", session=session.get('user'))

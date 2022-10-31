@@ -7,6 +7,7 @@
   --shadedBg: rgba(165, 201, 255, 0.153);
   --border: rgba(80, 75, 237, 0.241);
   --header: rgb(80, 86, 207);
+  --headerDark: rgb(57, 63, 180);
   --headerLight: rgba(80, 86, 207, 0.764);
   --darkText: rgb(20, 54, 145);
 }
@@ -111,6 +112,11 @@
 
 /* Borders */
 
+.bordered,
+.bordered:focus {
+  border: 1px solid var(--border);
+}
+
 .border-top {
   border-top: 1px solid var(--border);
 }
@@ -195,6 +201,12 @@
   background-color: var(--headerLight);
 }
 
+/* background hover colors */
+
+.bch-header-dark:hover {
+  background-color: var(--headerDark);
+}
+
 /* Box shadow */
 
 .bs-card {
@@ -255,6 +267,10 @@ a:hover > .hover-underline {
   text-decoration: underline;
 }
 
+.hover-cursor:hover {
+  cursor: pointer;
+}
+
 /* square */
 
 .square-1 {
@@ -264,4 +280,10 @@ a:hover > .hover-underline {
   max-height: 1.2rem;
   min-width: 1.2rem;
   min-height: 1.2rem;
+}
+
+/* line-height */
+
+.lh-150 {
+  line-height: 150%;
 }

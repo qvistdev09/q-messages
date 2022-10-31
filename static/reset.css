@@ -3,8 +3,15 @@ a,
 p,
 div,
 header,
-footer {
+footer,
+textarea {
   margin: 0;
   padding: 0;
   text-decoration: none;
+  box-sizing: border-box;
+}
+
+textarea, textarea:focus, button, button:focus {
+  border: none;
+  outline: none;
 }
