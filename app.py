@@ -8,10 +8,13 @@ from db import Session
 from message import Message
 from sqlalchemy import desc
 from sqlalchemy.orm import joinedload
+from flask_talisman import Talisman
 
 config.load()
 
 app = Flask(__name__)
+if env.get("PYTHON_ENV") == "production":
+    Talisman(app)
 app.secret_key = env.get("APP_SECRET_KEY")
 
 auth = OAuth(app)
