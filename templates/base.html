@@ -3,20 +3,20 @@
   <head>
     <link rel="stylesheet" href="static/normalize.css"/>
     <link rel="stylesheet" href="static/reset.css"/>
-    <link rel="stylesheet" href="static/utils.css"/>
     <link rel="stylesheet" href="static/style.css"/>
     <title>q-Messages</title>
   </head>
-  <body class="body">
-    <div class="app-outer">
-      <div class="app-inner">
-        <header class="header card">
-          <h1 class="app-title"><span class="app-title-detail">Q</span>MESSAGES</h1>
-          <div class="padded">
+  <body class="bc-dark">
+    <div class="medium-padding flex-row justify-center align-stretch">
+      <div class="flex mw-40rem flex-column gap-medium">
+        <header class="flex-row justify-between align-center br-medium bs-card bc-light">
+          <h1 class="fs-medium ls-1 fw-superbold fc-header-light medium-padding stretch-self flex-row align-center ff-montserrat gap-small">
+            <span class="fs-big fw-superbold bc-header fc-light ff-montserrat small-padding br-medium w-3rem flex-row justify-center align-center">Q</span>MESSAGES</h1>
+          <div class="medium-padding">
             {% if session %}
               <div class="flex-column align-center gap-small">
-                <div class="profile-picture">
-                  <img class="profile-picture-img" referrerpolicy="no-referrer" src="{{session.userinfo.picture}}" alt="{{session.userinfo.name}}'s profile picture"/>
+                <div class="mw-40px">
+                  <img class="w-100 br-half d-block" referrerpolicy="no-referrer" src="{{session.userinfo.picture}}" alt="{{session.userinfo.name}}'s profile picture"/>
                 </div>
                 <a href="/logout">Logout</a>
               </div>
@@ -28,7 +28,7 @@
         <main class="flex-column gap-medium">
           {% block content %}{% endblock %}
         </main>
-        <footer class="card padded">
+        <footer class="medium-padding br-medium bs-card bc-light">
           <p>Footer text</p>
         </footer>
       </div>

@@ -1,9 +1,9 @@
 {% macro card(card_object, spacing) -%}
-  <div {% if spacing == 20 %}class="card"{% endif %}>
+  <div {% if spacing == 10 %}class="br-medium bs-card bc-light"{% endif %}>
     <div>
-      <div class="flex-row space-between medium-padding border-bottom light-bg border-top">
-        <p class="bold h-color">{{ card_object.nickname }}</p>
-        <p class="light small-text">{{ card_object.readable_date }}</p>
+      <div class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top">
+        <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
+        <p class="fw-light fs-small">{{ card_object.readable_date }}</p>
       </div>
       <div class="large-padding">
         <p>{{ card_object.body }}</p>
@@ -17,7 +17,7 @@
           <div class="small-padding flex-column flex">
             {% for child in card_object.children %}
               <div class="small-padding">
-                {{ card(child, spacing + 20) }}
+                {{ card(child, spacing + 10) }}
               </div>
             {% endfor %}
           </div>
