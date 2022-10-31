@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% import 'macros.html' as macros %}
 {% block content %}
+  {% if session %}
+    <a class="flex-row justify-center align-center gap-small fc-light bc-header small-padding br-medium hover-cursor bch-header-dark" href="/new-post">
+      <i class="fa-solid fa-message fc-light"></i>New post</a>
+  {% endif %}
   {% for message in messages %}
     {{ macros.card(message, 16, true) }}
   {% endfor %}
