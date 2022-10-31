@@ -138,7 +138,3 @@ def handle_reply(post_id):
 @app.route("/error")
 def error():
     return render_template("error.html", session=session.get('user'))
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=env.get("PORT", 3000))
