@@ -55,13 +55,16 @@ def logout():
 
 @app.route("/")
 def home():
-    dbSession = Session()
-    messages = dbSession.query(Message).filter(Message.parent_message.is_(None)).order_by(
-        desc(Message.created_at)).all()
-    template_output = render_template(
-        "home.html", session=session.get('user'), messages=messages)
-    dbSession.close()
-    return template_output
+    try:
+        dbSession = Session()
+        messages = dbSession.query(Message).filter(Message.parent_message.is_(None)).order_by(
+            desc(Message.created_at)).all()
+        template_output = render_template(
+            "home.html", session=session.get('user'), messages=messages)
+        dbSession.close()
+        return template_output
+    except:
+        return redirect(url_for('error'))
 
 
 @app.route("/new-post")
@@ -103,6 +106,32 @@ def serve_reply_form(post_id):
     if message is None:
         return redirect(url_for('error'))
     return render_template("reply-form.html", session=session.get('user'), message=message)
+
+
+@app.route('/messages/<int:post_id>/reply', methods=["POST"])
+def handle_reply(post_id):
+    try:
+        userSession = session.get('user')
+        if userSession is None:
+            return redirect(url_for('error'))
+        dbSession = Session()
+        message = dbSession.query(Message).filter(
+            Message.id == post_id).one_or_none()
+        if message is None:
+            return redirect(url_for('error'))
+        messageBody = request.form.getlist("body")[0]
+        if len(messageBody) > 5000:
+            return redirect(url_for('error'))
+        nickname = userSession.get("userinfo").get("nickname")
+        sub = userSession.get("userinfo").get("sub")
+        reply = Message(messageBody, nickname, sub, datetime.now())
+        reply.parent_message = message.id
+        dbSession.add(reply)
+        dbSession.commit()
+        dbSession.close()
+        return redirect('/')
+    except:
+        return redirect(url_for('error'))
 
 
 @app.route("/error")
