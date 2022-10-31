@@ -2,7 +2,7 @@
   <div {% if is_top_level %}class="br-medium bs-card bc-light"{% else %}class="small-margin-top"{% endif %}>
     <div {% if is_top_level %}class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top"{% else %}class="flex-row align-center justify-between border-bottom small-padding"{% endif %}>
       <div class="flex-row align-center gap-tiny">
-        <div class="flex-row align-center justify-center bc-header square-1 br-half">
+        <div class="flex-row align-center justify-center bc-header-light square-1 br-half">
           <i class="fs-tiny fa-solid fa-user fc-light"></i>
         </div>
         <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
@@ -17,7 +17,7 @@
       {% if session %}
         <div class="flex-row justify-end">
           <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">
-            <i class="fa-solid fa-reply fs-small"></i>
+            <i class="fa-solid fa-reply fs-small fc-header-light"></i>
             <span class="hover-underline">reply</span>
           </a>
         </div>

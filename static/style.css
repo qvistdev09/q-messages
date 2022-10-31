@@ -1,18 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap");
 
-* {
-  box-sizing: border-box;
-  font-family: "Nunito", sans-serif;
-}
-
 :root {
   --bg: rgb(148, 182, 255);
   --lightBg: rgb(244, 248, 250);
   --shadedBg: rgba(165, 201, 255, 0.153);
-  --border: rgba(80, 75, 237, 0.385);
+  --border: rgba(80, 75, 237, 0.241);
   --header: rgb(80, 86, 207);
   --headerLight: rgba(80, 86, 207, 0.764);
+  --darkText: rgb(20, 54, 145);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Nunito", sans-serif;
+  color: var(--darkText);
 }
 
 /* Flex options */
@@ -187,6 +189,10 @@
 
 .bc-header {
   background-color: var(--header);
+}
+
+.bc-header-light {
+  background-color: var(--headerLight);
 }
 
 /* Box shadow */
