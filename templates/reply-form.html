@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="br-medium bs-card bc-light">
+    <div class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top">
+      <div class="flex-row align-center gap-tiny">
+        <div class="flex-row align-center justify-center bc-header-light square-1 br-half">
+          <i class="fs-tiny fa-solid fa-user fc-light"></i>
+        </div>
+        <p class="fw-bold fc-header">{{ message.nickname }}</p>
+      </div>
+      <div class="flex-row align-center gap-small">
+        <i class="fa-regular fa-clock fc-header fs-small"></i>
+        <p class="fw-light fs-small fc-header">{{ message.readable_date }}</p>
+      </div>
+    </div>
+    <div class="medium-padding">
+      <p class="multiline lh-150">{{ message.body }}</p>
+    </div>
+  </div>
+  <form class="br-medium bs-card bc-light" action="/messages/{{ message.id }}/reply" method="post">
+    <div class="flex-row align-center medium-padding border-bottom bc-shaded border-top gap-tiny">
+      <i class="fa-solid fa-pen fs-tiny fc-header-light"></i>
+      <p class="fc-header">Post reply to</p>
+      <p class="fw-bold fc-header">{{ message.nickname }}</p>
+    </div>
+    <div class="medium-padding flex-column align-stretch gap-small">
+      <div class="flex-row align-center gap-small">
+        <div class="flex-row align-center justify-center bc-header-light square-1 br-half">
+          <i class="fs-tiny fa-solid fa-user fc-light"></i>
+        </div>
+        <p class="fc-header">posting reply as:</p>
+        <p class="fw-bold fc-header">{{ session.userinfo.nickname }}</p>
+      </div>
+      <textarea maxlength="255" name="body" rows="8" class="small-padding flex bordered br-medium fc-header lh-150"></textarea>
+      <button class="fc-light bc-header small-padding br-medium hover-cursor bch-header-dark flex-row justify-center align-center gap-small">
+        <i class="fa-solid fa-message fc-light"></i>Post reply</button>
+    </div>
+  </form>
+{% endblock %}

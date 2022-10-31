@@ -91,6 +91,20 @@ def handle_post_request():
         return redirect(url_for('error'))
 
 
+@app.route('/messages/<int:post_id>/reply')
+def serve_reply_form(post_id):
+    userSession = session.get('user')
+    if userSession is None:
+        return redirect(url_for('error'))
+    dbSession = Session()
+    message = dbSession.query(Message).filter(
+        Message.id == post_id).one_or_none()
+    dbSession.close()
+    if message is None:
+        return redirect(url_for('error'))
+    return render_template("reply-form.html", session=session.get('user'), message=message)
+
+
 @app.route("/error")
 def error():
     return "there was an error"
