@@ -212,3 +212,9 @@
 .d-block {
   display: block;
 }
+
+/* Hover */
+
+a:hover > .hover-underline {
+  text-decoration: underline;
+}
