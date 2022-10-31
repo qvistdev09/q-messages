@@ -15,12 +15,14 @@
       </div>
       <div class="large-padding">
         <p>{{ card_object.body }}</p>
-        <div class="flex-row justify-end">
-          <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">
-            <span class="hover-underline">reply</span>
-            <i class="fa-solid fa-reply fs-small"></i>
-          </a>
-        </div>
+        {% if session %}
+          <div class="flex-row justify-end">
+            <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">
+              <span class="hover-underline">reply</span>
+              <i class="fa-solid fa-reply fs-small"></i>
+            </a>
+          </div>
+        {% endif %}
       </div>
       {% if card_object.children %}
         <div class="flex-row align-stretch">
