@@ -16,7 +16,8 @@
       <div class="large-padding">
         <p>{{ card_object.body }}</p>
         <div class="flex-row justify-end">
-          <a href="messages/{{card_object.id}}/reply">reply</a>
+          <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">reply <i class="fa-solid fa-reply"></i>
+          </a>
         </div>
       </div>
       {% if card_object.children %}
