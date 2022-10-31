@@ -13,7 +13,7 @@
       </div>
     </div>
     <div class="medium-padding{% if is_top_level != true%} no-padding-r{% endif %}">
-      <p>{{ card_object.body }}</p>
+      <p class="multiline lh-150">{{ card_object.body }}</p>
       {% if session %}
         <div class="flex-row justify-end">
           <a class="flex-row align-center gap-small" href="messages/{{card_object.id}}/reply">

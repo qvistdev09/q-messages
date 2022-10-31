@@ -14,7 +14,7 @@
         <p class="fc-header">posting message as:</p>
         <p class="fw-bold fc-header">{{ session.userinfo.nickname }}</p>
       </div>
-      <textarea name="body" rows="10" class="small-padding flex bordered br-medium fc-header lh-150"></textarea>
+      <textarea maxlength="255" name="body" rows="8" class="small-padding flex bordered br-medium fc-header lh-150"></textarea>
       <button class="fc-light bc-header small-padding br-medium hover-cursor bch-header-dark">Create post</button>
     </div>
   </form>

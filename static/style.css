@@ -287,3 +287,10 @@ a:hover > .hover-underline {
 .lh-150 {
   line-height: 150%;
 }
+
+/* Other */
+
+.multiline {
+  white-space: pre-line;
+  word-break: break-word;
+}

@@ -1,3 +1,4 @@
+from datetime import datetime
 import config
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
@@ -65,6 +66,9 @@ def home():
 
 @app.route("/new-post")
 def new_post():
+    userSession = session.get('user')
+    if userSession is None:
+        return redirect("/")
     return render_template("new-post.html", session=session.get('user'))
 
 
@@ -72,9 +76,17 @@ def new_post():
 def handle_post_request():
     try:
         messageBody = request.form.getlist("body")[0]
-        if len(messageBody) > 255:
+        userSession = session.get('user')
+        if len(messageBody) > 5000 or userSession is None:
             return redirect(url_for('error'))
-        return "HELLO"
+        nickname = userSession.get("userinfo").get("nickname")
+        sub = userSession.get("userinfo").get("sub")
+        dbSession = Session()
+        newMessage = Message(messageBody, nickname, sub, datetime.now())
+        dbSession.add(newMessage)
+        dbSession.commit()
+        dbSession.close()
+        return redirect('/')
     except:
         return redirect(url_for('error'))
 
