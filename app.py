@@ -137,4 +137,4 @@ def handle_reply(post_id):
 
 @app.route("/error")
 def error():
-    return "there was an error"
+    return render_template("error.html", session=session.get('user'))
