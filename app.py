@@ -2,7 +2,7 @@ import config
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
 from authlib.integrations.flask_client import OAuth
-from flask import Flask, redirect, render_template, session, url_for
+from flask import Flask, redirect, render_template, session, url_for, request
 from db import Session
 from message import Message
 from sqlalchemy import desc
@@ -66,3 +66,19 @@ def home():
 @app.route("/new-post")
 def new_post():
     return render_template("new-post.html", session=session.get('user'))
+
+
+@app.route("/new-post", methods=["POST"])
+def handle_post_request():
+    try:
+        messageBody = request.form.getlist("body")[0]
+        if len(messageBody) > 255:
+            return redirect(url_for('error'))
+        return "HELLO"
+    except:
+        return redirect(url_for('error'))
+
+
+@app.route("/error")
+def error():
+    return "there was an error"
