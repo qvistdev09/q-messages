@@ -15,7 +15,8 @@ config.load()
 app = Flask(__name__)
 if env.get("PYTHON_ENV") == "production":
     csp = {
-        'default-src': '*'
+        'default-src': '*',
+        'style-src': 'unsafe-inline'
     }
     Talisman(app, content_security_policy=csp)
 app.secret_key = env.get("APP_SECRET_KEY")
