@@ -51,6 +51,10 @@
   font-size: 0.9rem;
 }
 
+.small-padding {
+  padding: 1rem;
+}
+
 .large-padding {
   padding: 1.4rem;
 }
