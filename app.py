@@ -1,4 +1,6 @@
 from datetime import datetime
+
+import flask_talisman
 import config
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
@@ -14,11 +16,7 @@ config.load()
 
 app = Flask(__name__)
 if env.get("PYTHON_ENV") == "production":
-    csp = {
-        'default-src': '*',
-        'style-src': 'unsafe-inline'
-    }
-    Talisman(app, content_security_policy=csp)
+    Talisman(app, content_security_policy=flask_talisman.GOOGLE_CSP_POLICY)
 app.secret_key = env.get("APP_SECRET_KEY")
 
 auth = OAuth(app)
