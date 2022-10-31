@@ -17,7 +17,7 @@ config.load()
 app = Flask(__name__)
 if env.get("PYTHON_ENV") == "production":
     csp = dict(flask_talisman.GOOGLE_CSP_POLICY)
-    csp["default-src"] = ['\'self\'', 'kit.fontawesome.com', 'ka-f.fontawesome.com']
+    csp["default-src"] = ['\'self\'', 'kit.fontawesome.com', 'ka-f.fontawesome.com', '*.googleusercontent.com']
     csp["script-src"] = ['\'self\'', 'kit.fontawesome.com']
     csp["style-src"] = ['\'self\'', '\'unsafe-inline\'', 'fonts.googleapis.com']
     csp['font-src'] = ['\'self\'', 'ka-f.fontawesome.com', 'themes.googleusercontent.com', '*.gstatic.com']
