@@ -2,7 +2,12 @@
   <div {% if spacing == 10 %}class="br-medium bs-card bc-light"{% endif %}>
     <div>
       <div class="flex-row align-center justify-between medium-padding border-bottom bc-shaded border-top">
-        <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
+        <div class="flex-row align-center gap-small">
+          <div class="flex-row align-center justify-center bc-header small-padding br-medium">
+            <i class="fs-small fa-solid fa-user fc-light"></i>
+          </div>
+          <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
+        </div>
         <p class="fw-light fs-small">{{ card_object.readable_date }}</p>
       </div>
       <div class="large-padding">
