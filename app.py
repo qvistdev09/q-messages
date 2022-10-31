@@ -17,7 +17,7 @@ config.load()
 app = Flask(__name__)
 if env.get("PYTHON_ENV") == "production":
     csp = dict(flask_talisman.GOOGLE_CSP_POLICY)
-    csp["script-src-elem"] = ['\'self\'', 'kit.fontawesome.com']
+    csp["default-src"] = ['\'self\'', 'kit.fontawesome.com', 'ka-f.fontawesome.com']
     Talisman(app, content_security_policy=csp)
 app.secret_key = env.get("APP_SECRET_KEY")
 
