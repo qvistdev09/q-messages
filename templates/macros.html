@@ -8,7 +8,10 @@
           </div>
           <p class="fw-bold fc-header">{{ card_object.nickname }}</p>
         </div>
-        <p class="fw-light fs-small">{{ card_object.readable_date }}</p>
+        <div class="flex-row align-center gap-small">
+          <i class="fa-regular fa-clock fc-header fs-small"></i>
+          <p class="fw-light fs-small fc-header">{{ card_object.readable_date }}</p>
+        </div>
       </div>
       <div class="large-padding">
         <p>{{ card_object.body }}</p>
