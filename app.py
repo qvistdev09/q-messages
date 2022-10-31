@@ -1,6 +1,4 @@
 from datetime import datetime
-
-import flask_talisman
 import config
 from os import environ as env
 from urllib.parse import quote_plus, urlencode
@@ -10,18 +8,15 @@ from db import Session
 from message import Message
 from sqlalchemy import desc
 from sqlalchemy.orm import joinedload
-from flask_talisman import Talisman
+from csp import configure_csp
 
 config.load()
 
 app = Flask(__name__)
+
 if env.get("PYTHON_ENV") == "production":
-    csp = dict(flask_talisman.GOOGLE_CSP_POLICY)
-    csp["default-src"] = ['\'self\'', 'kit.fontawesome.com', 'ka-f.fontawesome.com', '*.googleusercontent.com']
-    csp["script-src"] = ['\'self\'', 'kit.fontawesome.com']
-    csp["style-src"] = ['\'self\'', '\'unsafe-inline\'', 'fonts.googleapis.com']
-    csp['font-src'] = ['\'self\'', 'ka-f.fontawesome.com', 'themes.googleusercontent.com', '*.gstatic.com']
-    Talisman(app, content_security_policy=csp)
+    configure_csp(app)
+
 app.secret_key = env.get("APP_SECRET_KEY")
 
 auth = OAuth(app)
