@@ -20,6 +20,7 @@ if env.get("PYTHON_ENV") == "production":
     csp["default-src"] = ['\'self\'', 'kit.fontawesome.com', 'ka-f.fontawesome.com']
     csp["script-src"] = ['\'self\'', 'kit.fontawesome.com']
     csp["style-src"] = ['\'self\'', '\'unsafe-inline\'']
+    csp['font-src'] = ['\'self\'', 'ka-f.fontawesome.com', 'themes.googleusercontent.com', '*.gstatic.com']
     Talisman(app, content_security_policy=csp)
 app.secret_key = env.get("APP_SECRET_KEY")
 
