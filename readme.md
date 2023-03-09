@@ -10,11 +10,6 @@ A minimal message board application which I created in order to familiarize myse
 - SQLAlchemy as database ORM.
 - Deployed on Heroku with Gunicorn as WSGI.
 
-## Have a look!
-
-The project is hosted on Heroku:
-https://q-messages.herokuapp.com/
-
 ## Screenshots
 
 ![Screenshot of q-messages web app](https://raw.githubusercontent.com/qvistdev09/q-messages/main/presentation/q-messages.png)
